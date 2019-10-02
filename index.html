@@ -30,6 +30,14 @@
                 speech.onend = () => {
                     speech.start();
                 };
+                
+                speech.onsoundstart = () => {
+                    btn.textContent = "Processing...";
+                };
+                
+                speech.onsoundend = () => {
+                    btn.textContent = "Waiting...";
+                };
             }
         </script>
     </body>
