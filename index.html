@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>Web Speech</title>
+    </head>
+    <body>
+        <button>Start</button>
+        <script>
+            'use strict';
+
+            {
+                const btn = document.querySelector('button');
+                const speech = new webkitSpeechRecognition();
+                speech.lang = 'ja-JP';
+
+                btn.addEventListener('click', () => {
+                    btn.disabled = true;
+                    speech.start();
+                });
+
+                speech.onresult = (e) => {
+                    console.log(e);
+                    speech.stop();
+                };
+            }
+        </script>
+    </body>
+</html>
