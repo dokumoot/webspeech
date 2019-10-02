@@ -12,7 +12,7 @@
             {
                 const btn = document.querySelector('button');
                 const speech = new webkitSpeechRecognition();
-                speech.lang = 'ja-JP';
+                speech.lang = 'en-US';
 
                 btn.addEventListener('click', () => {
                     btn.disabled = true;
@@ -20,8 +20,10 @@
                 });
 
                 speech.onresult = (e) => {
-                    console.log(e);
                     speech.stop();
+                    if (e.results[0].isFinal) {
+                        console.log(e.results[0][0].transcript);
+                        document.body.style.background = e.results[0][0].transcript;
                 };
             }
         </script>
