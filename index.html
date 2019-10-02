@@ -26,6 +26,10 @@
                         document.body.style.background = e.results[0][0].transcript;
                     }
                 };
+                
+                speech.onend = () => {
+                    speech.start();
+                };
             }
         </script>
     </body>
