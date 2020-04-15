@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<!-- <html lang="en"> -->
+<head>
+  <meta charset="UTF-8">
+  <title>Speech recognition sample</title>
+</head>
+<body>
+  <button id="btn">start</button>
+  <div id="content"></div>
+
+  <script>
+    const speech = new webkitSpeechRecognition();
+    speech.lang = 'ja-JP';
+    // speech.lang = 'en-US';
+
+    const btn = document.getElementById('btn');
+    const content = document.getElementById('content');
+
+    btn.addEventListener('click', () => {
+      btn.disabled = true;
+      speech.start();
+    });
+
+    speech.addEventListener('result', function(e) {
+      console.log(e);
+    });
+  </script>
+</body>
+<html>
