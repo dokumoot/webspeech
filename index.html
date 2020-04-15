@@ -28,11 +28,17 @@
       speech.start();
     });
 
-    speech.addEventListener('result', function(e) {
-      console.log(e);
-      const text = e.results[0][0].transcript;
-      content.innerText = text;
-    });
+    speech.onresult = function(e) {
+      speech.stop();
+      if (e.results[0].isFinal) {
+        let autotext = e.result[0][0].transcript;
+        content.innerHTML += '<div>' + autotext + '</div>';
+      }
+    }
+
+    speech.onend = () => {
+      speech.start();
+    }
   </script>
 </body>
 <html>
